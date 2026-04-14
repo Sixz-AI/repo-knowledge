@@ -1,62 +1,55 @@
 # RepoKnowledge
 
-Progressive codebase knowledge base plugin for Claude Code.
+> 为 AI 编程助手构建的渐进式代码库知识图谱。  
+> A progressive codebase knowledge base plugin for AI coding assistants.
 
-Clone git repos, auto-generate documentation for every function/class, and build a searchable knowledge cache that grows smarter with every query.
+克隆任意 Git 仓库，自动为每个函数/类生成文档，构建可搜索的知识缓存，每次查询后自动变得更聪明。
 
-## Features
+Clone any Git repo, auto-generate per-function/class documentation, and build a searchable cache that grows smarter with every query.
 
-- **rk-create** — Clone a git repo and generate full documentation index
-- **rk-update** — Incrementally update docs based on git commit history
-- **rk-search** — Semantic search with progressive alias learning
-- **rk-list** — List all indexed codebases
-- **rk-delete** — Remove a codebase knowledge base
+## 核心价值 / Value
 
-## Usage
+- **无需嵌入向量** — 基于 Agent 语义匹配，不依赖向量数据库
+- **渐进式学习** — 每次成功搜索自动添加别名，下次更快找到
+- **增量更新** — 只重建变更文件的文档，不重跑全量索引
+- **跨语言** — 支持 TS/JS/Python/Go/Java/Rust/C/C++ 等主流语言
 
-```bash
-# Index a new repo
-/repo-knowledge:rk-create git@github.com:org/project.git
-
-# Search the knowledge base
-/repo-knowledge:rk-search 窗口大小
-/repo-knowledge:rk-search authentication middleware
-
-# Update after new commits
-/repo-knowledge:rk-update my-project
-
-# List all knowledge bases
-/repo-knowledge:rk-list
-
-# Delete a knowledge base
-/repo-knowledge:rk-delete my-project
-```
-
-## How It Works
-
-1. **Create**: Clones repo → scans code → generates docs (function/class level) → builds index
-2. **Search**: Reads index → Agent semantic matching → verifies relevance → returns docs
-3. **Learn**: Every successful search adds an alias to the index, making future searches faster
-4. **Update**: Checks git diff → only regenerates changed docs → keeps cache fresh
-
-## Data Directory
-
-```
-~/.repo-knowledge/
-├── _registry.md              # All registered projects
-├── _repos/                   # Cloned git repositories
-│   └── my-project/
-├── my-project/               # Knowledge cache
-│   ├── _meta.md              # Project metadata
-│   ├── _index.md             # Searchable index with aliases
-│   └── docs/                 # Cached documentation
-│       └── src/
-│           └── auth/
-│               └── validate-token.md
-```
-
-## Local Development
+## 安装 / Install
 
 ```bash
 claude --plugin-dir ./repo-knowledge
 ```
+
+## 快速命令 / Quick Reference
+
+| 命令 | 说明 | Command |
+|------|------|---------|
+| `/repo-knowledge:rk-create <git-url>` | 索引新仓库 | Index a new repo |
+| `/repo-knowledge:rk-search <query>` | 语义搜索 | Semantic search |
+| `/repo-knowledge:rk-update <project>` | 增量更新 | Incremental update |
+| `/repo-knowledge:rk-list` | 列出所有知识库 | List all knowledge bases |
+| `/repo-knowledge:rk-delete <project>` | 删除知识库 | Delete a knowledge base |
+
+## 文档 / Documentation
+
+- [Epic & Features](docs/epic.md) — 产品目标与功能层次
+- [Use Cases](docs/user-stories.md) — 用户故事与使用场景
+- [Architecture](docs/architecture.md) — 架构与工作原理
+- [Getting Started](docs/getting-started.md) — 快速上手指南
+- [Skill Reference](docs/skill-reference.md) — Skill API 参考
+
+## 数据目录 / Data Directory
+
+```
+~/.repo-knowledge/
+├── _registry.md          # 已注册项目列表
+├── _repos/               # 克隆的 Git 仓库
+└── <project>/            # 知识缓存
+    ├── _meta.md          # 项目元数据
+    ├── _index.md         # 带别名的可搜索索引
+    └── docs/             # 缓存的文档文件
+```
+
+## License
+
+MIT
