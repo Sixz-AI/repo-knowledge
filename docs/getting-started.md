@@ -8,8 +8,9 @@
 ## 安装 / Installation
 
 ```bash
-# 进入 repo-knowledge 目录
-cd ~/Documents/code/ai/repo-knowledge
+# 克隆仓库 / Clone the repo
+git clone https://github.com/code60-AI/repo-knowledge.git
+cd repo-knowledge
 
 # 以插件模式启动 Claude Code / Launch Claude Code with plugin
 claude --plugin-dir .
@@ -44,6 +45,8 @@ SSH 格式也支持 / SSH format also works:
 ```
 /repo-knowledge:rk-create git@github.com:org/my-project.git
 ```
+
+> **注意 / Note:** SSH 格式需要在本机配置好 SSH key 并添加到 GitHub 账户。/ SSH format requires an SSH key configured on this machine and added to your GitHub account.
 
 ---
 
