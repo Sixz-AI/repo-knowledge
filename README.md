@@ -17,10 +17,19 @@ Clone any Git repo, auto-generate per-function/class documentation, and build a 
 ## 安装 / Install
 
 ```bash
-claude --plugin-dir ./repo-knowledge
+# 克隆仓库 / Clone the repo
+git clone https://github.com/code60-AI/repo-knowledge.git
+cd repo-knowledge
+
+# 以插件模式启动 Claude Code / Launch Claude Code with plugin
+claude --plugin-dir .
 ```
 
 ## 快速命令 / Quick Reference
+
+所有命令使用 `repo-knowledge:` 命名空间前缀，由 Claude Code 插件系统自动识别。
+
+All commands use the `repo-knowledge:` namespace prefix, auto-registered by Claude Code's plugin system.
 
 | 命令 | 说明 | Command |
 |------|------|---------|
@@ -32,10 +41,10 @@ claude --plugin-dir ./repo-knowledge
 
 ## 文档 / Documentation
 
+- [Getting Started](docs/getting-started.md) — 快速上手指南 ← **从这里开始 / Start here**
 - [Epic & Features](docs/epic.md) — 产品目标与功能层次
 - [Use Cases](docs/user-stories.md) — 用户故事与使用场景
 - [Architecture](docs/architecture.md) — 架构与工作原理
-- [Getting Started](docs/getting-started.md) — 快速上手指南
 - [Skill Reference](docs/skill-reference.md) — Skill API 参考
 
 ## 数据目录 / Data Directory
