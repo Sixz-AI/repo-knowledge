@@ -4,13 +4,13 @@
     "name": "code60-AI"
   },
   "description": "Progressive codebase knowledge base — clone git repos, auto-generate documentation, and build a searchable knowledge cache that grows smarter with every query.",
-  "version": "0.1.0",
-  "repository": "https://github.com/code60-AI/repo-knowledge",
-  "license": "MIT",
   "plugins": [
     {
       "name": "repo-knowledge",
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "code60-AI/repo-knowledge"
+      },
       "description": "Progressive codebase knowledge base — clone git repos, auto-generate documentation, and build a searchable knowledge cache that grows smarter with every query.",
       "version": "0.1.0",
       "author": {
