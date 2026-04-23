@@ -1,6 +1,0 @@
-{
-  "allowedTools": [
-    "Edit:~/.repo-knowledge/**",
-    "Write:~/.repo-knowledge/**"
-  ]
-}
