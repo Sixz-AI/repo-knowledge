@@ -13,13 +13,9 @@ Clone any Git repo, auto-generate per-function/class documentation, and build a 
 
 ## Install
 
-```bash
-# Clone the repo
-git clone https://github.com/Sixz-AI/repo-knowledge.git
-cd repo-knowledge
-
-# Launch Claude Code with plugin
-claude --plugin-dir .
+```
+/plugin marketplace add Sixz-AI/repo-knowledge
+/plugin install repo-knowledge@repo-knowledge
 ```
 
 ## Quick Reference

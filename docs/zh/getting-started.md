@@ -7,21 +7,14 @@
 
 ## 安装
 
-```bash
-# 克隆仓库
-git clone https://github.com/Sixz-AI/repo-knowledge.git
-cd repo-knowledge
+在 Claude Code 中执行以下两条命令：
 
-# 以插件模式启动 Claude Code
-claude --plugin-dir .
+```
+/plugin marketplace add Sixz-AI/repo-knowledge
+/plugin install repo-knowledge@repo-knowledge
 ```
 
-首次启动时，SessionStart Hook 会自动创建数据目录：
-
-```bash
-mkdir -p ~/.repo-knowledge/_repos
-touch -a ~/.repo-knowledge/_registry.md
-```
+首次启动时，SessionStart Hook 会自动创建数据目录。
 
 ---
 

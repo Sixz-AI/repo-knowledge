@@ -7,21 +7,14 @@
 
 ## Installation
 
-```bash
-# Clone the repo
-git clone https://github.com/Sixz-AI/repo-knowledge.git
-cd repo-knowledge
+Run these two commands inside Claude Code:
 
-# Launch Claude Code with plugin
-claude --plugin-dir .
+```
+/plugin marketplace add Sixz-AI/repo-knowledge
+/plugin install repo-knowledge@repo-knowledge
 ```
 
-The SessionStart hook auto-creates the data directory on first launch:
-
-```bash
-mkdir -p ~/.repo-knowledge/_repos
-touch -a ~/.repo-knowledge/_registry.md
-```
+The SessionStart hook auto-creates the data directory on first launch.
 
 ---
 
