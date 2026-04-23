@@ -1,7 +1,7 @@
 {
   "name": "repo-knowledge",
   "owner": {
-    "name": "code60-AI"
+    "name": "Sixz-AI"
   },
   "description": "Progressive codebase knowledge base — clone git repos, auto-generate documentation, and build a searchable knowledge cache that grows smarter with every query.",
   "plugins": [
@@ -9,12 +9,12 @@
       "name": "repo-knowledge",
       "source": {
         "source": "github",
-        "repo": "code60-AI/repo-knowledge"
+        "repo": "Sixz-AI/repo-knowledge"
       },
       "description": "Progressive codebase knowledge base — clone git repos, auto-generate documentation, and build a searchable knowledge cache that grows smarter with every query.",
       "version": "0.1.0",
       "author": {
-        "name": "code60-AI"
+        "name": "Sixz-AI"
       },
       "keywords": ["codebase", "knowledge-base", "documentation", "git", "search"],
       "category": "development"

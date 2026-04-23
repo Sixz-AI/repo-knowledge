@@ -15,7 +15,7 @@ Clone any Git repo, auto-generate per-function/class documentation, and build a 
 
 ```bash
 # Clone the repo
-git clone https://github.com/code60-AI/repo-knowledge.git
+git clone https://github.com/Sixz-AI/repo-knowledge.git
 cd repo-knowledge
 
 # Launch Claude Code with plugin

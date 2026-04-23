@@ -9,7 +9,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/code60-AI/repo-knowledge.git
+git clone https://github.com/Sixz-AI/repo-knowledge.git
 cd repo-knowledge
 
 # 以插件模式启动 Claude Code
