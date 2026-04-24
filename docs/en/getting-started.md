@@ -3,7 +3,6 @@
 ## Prerequisites
 
 - Claude Code CLI installed
-- Plugin support available
 
 ## Installation
 
@@ -24,6 +23,11 @@ The SessionStart hook auto-creates the data directory on first launch.
 /repo-knowledge:rk-create https://github.com/org/my-project.git
 ```
 
+SSH format also works:
+```
+/repo-knowledge:rk-create git@github.com:org/my-project.git
+```
+
 Expected output:
 ```
 Cloning into 'my-project'...
@@ -32,23 +36,12 @@ Cloning into 'my-project'...
 Knowledge base created: my-project (128 docs)
 ```
 
-SSH format also works:
-```
-/repo-knowledge:rk-create git@github.com:org/my-project.git
-```
-
-> **Note:** SSH format requires an SSH key configured on this machine and added to your GitHub account.
-
 ---
 
-## Step 2: Your First Search
+## Step 2: Search
 
 ```
 /repo-knowledge:rk-search how does authentication work
-```
-
-Or in Chinese:
-```
 /repo-knowledge:rk-search 认证逻辑在哪里
 ```
 
@@ -66,8 +59,6 @@ Searching my-project...
 
 ## Step 3: Update After New Commits
 
-When the repo has new commits:
-
 ```
 /repo-knowledge:rk-update my-project
 ```
@@ -84,18 +75,54 @@ Updated: my-project (129 docs, last commit: a1b2c3d)
 
 ---
 
-## Step 4: Manage Knowledge Bases
+## Step 4: Save Personal Notes
+
+Store anything you know by heart — commands, tips, workflows — so you can search it later:
+
+```
+/repo-knowledge:rk-memo git undo last commit: git reset --soft HEAD~1
+/repo-knowledge:rk-memo kubectl list all pods: kubectl get pods -A --watch
+```
+
+Retrieve it any time:
+```
+/repo-knowledge:rk-search undo commit
+```
+
+Personal notes live in a special `_personal` project (no git repo needed) and sync across machines just like indexed codebases.
+
+---
+
+## Step 5: Sync Across Machines (Optional)
+
+Prepare a **private** git repository to store your knowledge base, then:
+
+**On the first machine:**
+```
+/repo-knowledge:rk-remote-init git@github.com:yourname/my-knowledge.git
+```
+
+**On every other machine (after installing the plugin):**
+```
+/repo-knowledge:rk-remote-init git@github.com:yourname/my-knowledge.git
+/repo-knowledge:rk-pull
+```
+
+From this point, `rk-update` automatically pulls before updating and pushes afterwards — no manual sync needed.
+
+To push or pull manually:
+```
+/repo-knowledge:rk-push
+/repo-knowledge:rk-pull
+```
+
+---
+
+## Step 6: Manage Knowledge Bases
 
 List all:
 ```
 /repo-knowledge:rk-list
-```
-
-Expected:
-```
-| Project    | Git URL                              | Last Update | Docs |
-|------------|--------------------------------------|-------------|------|
-| my-project | https://github.com/org/my-project... | 2026-04-14  | 129  |
 ```
 
 Delete:
@@ -103,12 +130,11 @@ Delete:
 /repo-knowledge:rk-delete my-project
 ```
 
-System asks for confirmation before deleting.
-
 ---
 
 ## Tips
 
 - Search supports any language, including mixed CN+EN
-- After first search, similar queries find it faster
+- After first search, similar queries find it faster (progressive alias learning)
 - Large repos (1000+ files) may take a few minutes to index
+- Always use a **private** remote repository — docs contain code snippets

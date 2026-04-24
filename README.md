@@ -26,9 +26,13 @@ All commands use the `repo-knowledge:` namespace prefix, auto-registered by Clau
 |---------|-------------|
 | `/repo-knowledge:rk-create <git-url>` | Index a new repo |
 | `/repo-knowledge:rk-search <query>` | Semantic search |
-| `/repo-knowledge:rk-update <project>` | Incremental update |
+| `/repo-knowledge:rk-update <project>` | Incremental update + auto-sync |
+| `/repo-knowledge:rk-memo <title>: <content>` | Save personal knowledge (no repo needed) |
 | `/repo-knowledge:rk-list` | List all knowledge bases |
 | `/repo-knowledge:rk-delete <project>` | Delete a knowledge base |
+| `/repo-knowledge:rk-remote-init <git-url>` | Set up cross-machine sync |
+| `/repo-knowledge:rk-push` | Push to remote |
+| `/repo-knowledge:rk-pull` | Pull from remote |
 
 ## Documentation
 

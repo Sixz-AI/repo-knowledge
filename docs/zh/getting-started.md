@@ -3,7 +3,6 @@
 ## 前置条件
 
 - Claude Code CLI 已安装
-- 已安装插件支持
 
 ## 安装
 
@@ -24,6 +23,11 @@
 /repo-knowledge:rk-create https://github.com/org/my-project.git
 ```
 
+SSH 格式也支持：
+```
+/repo-knowledge:rk-create git@github.com:org/my-project.git
+```
+
 预期输出：
 ```
 Cloning into 'my-project'...
@@ -32,23 +36,12 @@ Cloning into 'my-project'...
 Knowledge base created: my-project (128 docs)
 ```
 
-SSH 格式也支持：
-```
-/repo-knowledge:rk-create git@github.com:org/my-project.git
-```
-
-> **注意：** SSH 格式需要在本机配置好 SSH key 并添加到 GitHub 账户。
-
 ---
 
-## Step 2: 第一次搜索
+## Step 2: 搜索
 
 ```
 /repo-knowledge:rk-search how does authentication work
-```
-
-或用中文：
-```
 /repo-knowledge:rk-search 认证逻辑在哪里
 ```
 
@@ -66,8 +59,6 @@ Searching my-project...
 
 ## Step 3: 新提交后更新
 
-当仓库有新提交时：
-
 ```
 /repo-knowledge:rk-update my-project
 ```
@@ -84,18 +75,54 @@ Updated: my-project (129 docs, last commit: a1b2c3d)
 
 ---
 
-## Step 4: 管理知识库
+## Step 4: 保存个人笔记
+
+把脑子里常用的东西存下来——命令、技巧、个人工作流——随时搜索：
+
+```
+/repo-knowledge:rk-memo git 撤销最后一次 commit: git reset --soft HEAD~1
+/repo-knowledge:rk-memo kubectl 查看所有 pod: kubectl get pods -A --watch
+```
+
+之后直接搜索：
+```
+/repo-knowledge:rk-search 撤销 commit
+```
+
+个人笔记存放在特殊的 `_personal` 项目中（不需要 git 仓库），和代码库知识一起跨机器同步。
+
+---
+
+## Step 5: 跨机器同步（可选）
+
+准备一个**私有** git 仓库用于存放知识库，然后：
+
+**第一台机器：**
+```
+/repo-knowledge:rk-remote-init git@github.com:yourname/my-knowledge.git
+```
+
+**其他机器（安装插件后）：**
+```
+/repo-knowledge:rk-remote-init git@github.com:yourname/my-knowledge.git
+/repo-knowledge:rk-pull
+```
+
+配置完成后，`rk-update` 每次运行会自动 pull（开头）和 push（结尾），无需手动同步。
+
+手动触发同步：
+```
+/repo-knowledge:rk-push
+/repo-knowledge:rk-pull
+```
+
+---
+
+## Step 6: 管理知识库
 
 列出所有知识库：
 ```
 /repo-knowledge:rk-list
-```
-
-预期输出：
-```
-| Project    | Git URL                              | Last Update | Docs |
-|------------|--------------------------------------|-------------|------|
-| my-project | https://github.com/org/my-project... | 2026-04-14  | 129  |
 ```
 
 删除知识库：
@@ -103,12 +130,11 @@ Updated: my-project (129 docs, last commit: a1b2c3d)
 /repo-knowledge:rk-delete my-project
 ```
 
-系统会要求确认后再删除。
-
 ---
 
 ## 提示
 
 - 搜索支持任意语言，中英混用均可
-- 首次搜索某个概念后，下次用相似词会更快找到
+- 首次搜索某个概念后，下次用相似词会更快找到（渐进式 alias 学习）
 - 大型仓库（1000+ 文件）索引可能需要几分钟
+- 远端仓库必须设为**私有**——文档中包含被索引项目的代码片段
