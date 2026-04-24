@@ -7,6 +7,5 @@
   },
   "keywords": ["codebase", "knowledge-base", "documentation", "git", "search"],
   "skills": "./skills",
-  "agents": ["./agents/indexer.md", "./agents/searcher.md"],
-  "hooks": "./hooks/hooks.json"
+  "agents": ["./agents/indexer.md", "./agents/searcher.md"]
 }
